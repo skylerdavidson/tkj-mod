@@ -224,6 +224,8 @@
             this.inventory[0].SetDefaults("Copper Shortsword");
             this.inventory[1].SetDefaults("Copper Pickaxe");
             this.inventory[2].SetDefaults("Copper Axe");
+            this.inventory[3].SetDefaults(4095);
+            this.inventory[3].stack = 250;
            
             for (int k = 0; k < 0x56; k++)
             {
@@ -3702,17 +3704,13 @@
             this.shadowCount++;
             if (this.shadowCount == 1)
             {
-                this.shadowPos[3] = this.shadowPos[2];
+                this.shadowPos[2] = this.shadowPos[1];
             }
             else if (this.shadowCount == 2)
             {
-                this.shadowPos[2] = this.shadowPos[1];
-            }
-            else if (this.shadowCount == 3)
-            {
                 this.shadowPos[1] = this.shadowPos[0];
             }
-            else if (this.shadowCount >= 4)
+            else if (this.shadowCount >= 3)
             {
                 this.shadowCount = 0;
                 this.shadowPos[0] = this.position;

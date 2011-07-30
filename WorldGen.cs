@@ -467,6 +467,7 @@
                             if (genRand.Next(3) == 0)
                             {
                                 Main.chest[index].item[num6].SetDefaults(0xa7, false);
+                                Main.chest[index].item[num6].SetDefaults(4094, false);
                                 num6++;
                             }
                             if (genRand.Next(2) == 0)
@@ -635,6 +636,7 @@
                         if (genRand.Next(3) == 0)
                         {
                             Main.chest[index].item[num6].SetDefaults(0xa7, false);
+                            Main.chest[index].item[num6].SetDefaults(4094, false);
                             num6++;
                         }
                         if (genRand.Next(2) == 0)
