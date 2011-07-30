@@ -5,7 +5,7 @@
     public class Recipe
     {
         public Item createItem = new Item();
-        public static int maxRecipes = 200;
+        public static int maxRecipes = 300;
         public static int maxRequirements = 10;
         public bool needWater;
         private static Recipe newRecipe = new Recipe();
@@ -1292,6 +1292,23 @@
             newRecipe.requiredItem[0].SetDefaults("Glass");
             newRecipe.requiredItem[1].SetDefaults("Fallen Star");
             newRecipe.requiredItem[1].stack = 3;
+            addRecipe();
+
+            //Dynamite recipe
+            newRecipe.createItem.SetDefaults(167, false);
+            newRecipe.createItem.stack = 1;
+            newRecipe.requiredItem[0].SetDefaults(166, false);
+            newRecipe.requiredItem[0].stack = 3;
+            newRecipe.requiredTile[0] = 0x12;
+            addRecipe();
+
+            //Enchanted Dynamite
+            newRecipe.createItem.SetDefaults(4094);
+            newRecipe.createItem.stack = 1;
+            newRecipe.requiredItem[0].SetDefaults("Dynamite");
+            newRecipe.requiredItem[1].SetDefaults("Fallen Star");
+            newRecipe.requiredItem[1].stack = 2;
+            newRecipe.requiredTile[0] = 0x12;
             addRecipe();
 
             for (int i = 0; i < numRecipes; i++)

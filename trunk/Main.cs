@@ -3735,7 +3735,11 @@
                                     cursorText = string.Concat(new object[] { obj2, recipe[availableRecipe[num69]].createItem.name + " (", recipe[availableRecipe[num69]].createItem.stack, ")" });
                                 }
                             }
-                            if (numAvailableRecipes > 0)
+
+                            /*--------------------------------*\
+                             * Fucking fix me
+                            \*--------------------------------*/
+                            if (numAvailableRecipes > 0 && num69 < numAvailableRecipes)
                             {
                                 num72 -= 50.0;
                                 if (num72 < 0.0)
@@ -3762,7 +3766,7 @@
                                     vector8 = new Vector2();
                                     this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[num69]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[num69]].createItem.type].Width, itemTexture[recipe[availableRecipe[num69]].createItem.type].Height), recipe[availableRecipe[num69]].createItem.GetAlpha(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
                                     color27 = new Color();
-                                    if (recipe[availableRecipe[num69]].createItem.color != color27)
+                                    if (recipe[ availableRecipe[num69]].createItem.color != color27)
                                     {
                                         vector8 = new Vector2();
                                         this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[num69]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[num69]].createItem.type].Width, itemTexture[recipe[availableRecipe[num69]].createItem.type].Height), recipe[availableRecipe[num69]].createItem.GetColor(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
@@ -11160,8 +11164,10 @@
                             Console.WriteLine(string.Concat(new object[] { "dusk", '\t', '\t', " Change time to dusk." }));
                             Console.WriteLine("midnight" + '\t' + " Change time to midnight.");
                             Console.WriteLine(string.Concat(new object[] { "settle", '\t', '\t', " Settle all water." }));
+                            Console.WriteLine("spawn_demon_eye" + '\t' + " Spawns an Eye of Cthulhu.");
                             continue;
                         }
+
                         case "settle":
                         {
                             if (!Liquid.panicMode)
@@ -11368,7 +11374,7 @@
                         }
                         else
                         {
-                            Console.WriteLine("<Server> " + str7);
+                            Console.WriteLine("<Lord Terraria> " + str7);
                             NetMessage.SendData(0x19, -1, -1, "<Server> " + str7, 0xff, 255f, 240f, 20f, 0);
                         }
                     }
@@ -11718,7 +11724,7 @@
                         PlaySound(11, -1, -1, 1);
                     }
                 }
-                if ((keyState.IsKeyDown(Keys.Enter) && (Main.netMode == 1)) && (!keyState.IsKeyDown(Keys.LeftAlt) && !keyState.IsKeyDown(Keys.RightAlt)))
+                if ((keyState.IsKeyDown(Keys.Enter) /*&& (Main.netMode == 1) //removed for singleplayer chat function*/) && (!keyState.IsKeyDown(Keys.LeftAlt) && !keyState.IsKeyDown(Keys.RightAlt)))
                 {
                     if ((chatRelease && !chatMode) && !editSign)
                     {
@@ -12724,7 +12730,7 @@
                                         {
                                             flag3 = true;
                                         }
-                                        if (((player[num20].inventory[num21].type == 0xa6) || (player[num20].inventory[num21].type == 0xa7)) || ((player[num20].inventory[num21].type == 0xa8) || (player[num20].inventory[num21].type == 0xeb)))
+                                        if (((player[num20].inventory[num21].type == 0xa6) || (player[num20].inventory[num21].type == 0xa7) || (player[num20].inventory[num21].type == 4094)) || ((player[num20].inventory[num21].type == 0xa8) || (player[num20].inventory[num21].type == 0xeb)))
                                         {
                                             flag4 = true;
                                         }

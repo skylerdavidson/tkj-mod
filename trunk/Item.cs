@@ -4903,6 +4903,25 @@
 
             //Mod
             //NOTE: we start the modded items at 0x1000 so as to make room for new items in official patches
+            else if (this.type == 4094)
+            {
+                this.useStyle = 1;
+                this.name = "Enchanted Dynamite";
+                this.shootSpeed = 4f;
+                this.shoot = 0x1d;
+                this.width = 8;
+                this.height = 0x1c;
+                this.maxStack = 50;
+                this.consumable = true;
+                this.useSound = 1;
+                this.useAnimation = 40;
+                this.useTime = 40;
+                this.noUseGraphic = true;
+                this.noMelee = true;
+                this.rare = 1;
+                this.toolTip = "Enchanted explosion that will destroy more than most tiles";
+            }
+
             else if (this.type == 4095)
             {
                 this.name = "Portal Block";

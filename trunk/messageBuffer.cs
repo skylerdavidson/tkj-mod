@@ -1297,6 +1297,20 @@
 
                                                     break;
                                                 }
+                                            case "/spawn_king_slime":
+                                                {
+                                                    Console.WriteLine(Main.player[this.whoAmI].name + " summoned King Slime!");
+
+                                                    Vector2 position2;
+
+                                                    //spawn King Slime
+                                                    position2.X = ((Main.spawnTileX * 0x10) + 8);
+                                                    position2.Y = (Main.spawnTileY * 0x10) - 10;
+
+                                                    NPC.NewNPC(((int)position2.X), ((int)position2.Y), 50, 0);
+
+                                                    break;
+                                                }
                                             case "/settle":
                                                 {
                                                     if (!Liquid.panicMode)
