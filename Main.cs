@@ -1754,28 +1754,29 @@
                         }
                     }
                     Rectangle rectangle4 = new Rectangle(((int) screenPosition.X) - 50, ((int) screenPosition.Y) - 50, screenWidth + 100, screenHeight + 100);
-                    for (int num69 = 0; num69 < numDust; num69++)
+                    //Renamed all Occurances of num69 var to recipeBatch
+                    for (int recipeBatch = 0; recipeBatch < numDust; recipeBatch++)
                     {
-                        if (dust[num69].active)
+                        if (dust[recipeBatch].active)
                         {
-                            Rectangle rectangle5 = new Rectangle((int) dust[num69].position.X, (int) dust[num69].position.Y, 4, 4);
+                            Rectangle rectangle5 = new Rectangle((int) dust[recipeBatch].position.X, (int) dust[recipeBatch].position.Y, 4, 4);
                             if (rectangle5.Intersects(rectangle4))
                             {
-                                Color color8 = Lighting.GetColor(((int) (dust[num69].position.X + 4.0)) / 0x10, ((int) (dust[num69].position.Y + 4.0)) / 0x10);
-                                if (((dust[num69].type == 6) || (dust[num69].type == 15)) || dust[num69].noLight)
+                                Color color8 = Lighting.GetColor(((int) (dust[recipeBatch].position.X + 4.0)) / 0x10, ((int) (dust[recipeBatch].position.Y + 4.0)) / 0x10);
+                                if (((dust[recipeBatch].type == 6) || (dust[recipeBatch].type == 15)) || dust[recipeBatch].noLight)
                                 {
                                     color8 = Color.White;
                                 }
-                                this.spriteBatch.Draw(dustTexture, dust[num69].position - screenPosition, new Rectangle?(dust[num69].frame), dust[num69].GetAlpha(color8), dust[num69].rotation, new Vector2(4f, 4f), dust[num69].scale, SpriteEffects.None, 0f);
+                                this.spriteBatch.Draw(dustTexture, dust[recipeBatch].position - screenPosition, new Rectangle?(dust[recipeBatch].frame), dust[recipeBatch].GetAlpha(color8), dust[recipeBatch].rotation, new Vector2(4f, 4f), dust[recipeBatch].scale, SpriteEffects.None, 0f);
                                 color12 = new Color();
-                                if (dust[num69].color != color12)
+                                if (dust[recipeBatch].color != color12)
                                 {
-                                    this.spriteBatch.Draw(dustTexture, dust[num69].position - screenPosition, new Rectangle?(dust[num69].frame), dust[num69].GetColor(color8), dust[num69].rotation, new Vector2(4f, 4f), dust[num69].scale, SpriteEffects.None, 0f);
+                                    this.spriteBatch.Draw(dustTexture, dust[recipeBatch].position - screenPosition, new Rectangle?(dust[recipeBatch].frame), dust[recipeBatch].GetColor(color8), dust[recipeBatch].rotation, new Vector2(4f, 4f), dust[recipeBatch].scale, SpriteEffects.None, 0f);
                                 }
                             }
                             else
                             {
-                                dust[num69].active = false;
+                                dust[recipeBatch].active = false;
                             }
                         }
                     }
@@ -3647,56 +3648,56 @@
                     }
                     vector8 = new Vector2();
                     this.spriteBatch.DrawString(fontMouseText, "Crafting", new Vector2(76f, 414f), color8, 0f, vector8, (float) 1f, SpriteEffects.None, 0f);
-                    for (int num69 = 0; num69 < Recipe.maxRecipes; num69++)
+                    for (int recipeBatch = 0; recipeBatch < Recipe.maxRecipes; recipeBatch++)
                     {
-                        inventoryScale = 100f / (Math.Abs(availableRecipeY[num69]) + 100f);
+                        inventoryScale = 100f / (Math.Abs(availableRecipeY[recipeBatch]) + 100f);
                         if (inventoryScale < 0.75)
                         {
                             inventoryScale = 0.75f;
                         }
-                        if (availableRecipeY[num69] < ((num69 - Main.focusRecipe) * 0x41))
+                        if (availableRecipeY[recipeBatch] < ((recipeBatch - Main.focusRecipe) * 0x41))
                         {
-                            if (availableRecipeY[num69] == 0f)
+                            if (availableRecipeY[recipeBatch] == 0f)
                             {
                                 PlaySound(12, -1, -1, 1);
                             }
-                            availableRecipeY[num69] += 6.5f;
+                            availableRecipeY[recipeBatch] += 6.5f;
                         }
-                        else if (availableRecipeY[num69] > ((num69 - Main.focusRecipe) * 0x41))
+                        else if (availableRecipeY[recipeBatch] > ((recipeBatch - Main.focusRecipe) * 0x41))
                         {
-                            if (availableRecipeY[num69] == 0f)
+                            if (availableRecipeY[recipeBatch] == 0f)
                             {
                                 PlaySound(12, -1, -1, 1);
                             }
-                            availableRecipeY[num69] -= 6.5f;
+                            availableRecipeY[recipeBatch] -= 6.5f;
                         }
-                        if ((num69 < numAvailableRecipes) && (Math.Abs(availableRecipeY[num69]) <= 250f))
+                        if ((recipeBatch < numAvailableRecipes) && (Math.Abs(availableRecipeY[recipeBatch]) <= 250f))
                         {
                             int num70 = (int) (46f - (26f * inventoryScale));
-                            int num71 = (int) ((410f + (availableRecipeY[num69] * inventoryScale)) - (30f * inventoryScale));
+                            int num71 = (int) ((410f + (availableRecipeY[recipeBatch] * inventoryScale)) - (30f * inventoryScale));
                             double num72 = color2.A + 50;
                             double num73 = 255.0;
-                            if (Math.Abs(availableRecipeY[num69]) > 150f)
+                            if (Math.Abs(availableRecipeY[recipeBatch]) > 150f)
                             {
-                                num72 = (150f * (100f - (Math.Abs(availableRecipeY[num69]) - 150f))) * 0.01;
-                                num73 = (255f * (100f - (Math.Abs(availableRecipeY[num69]) - 150f))) * 0.01;
+                                num72 = (150f * (100f - (Math.Abs(availableRecipeY[recipeBatch]) - 150f))) * 0.01;
+                                num73 = (255f * (100f - (Math.Abs(availableRecipeY[recipeBatch]) - 150f))) * 0.01;
                             }
                             Color color10 = new Color((int) ((byte) num72), (int) ((byte) num72), (int) ((byte) num72), (int) ((byte) num72));
                             Color color11 = new Color((int) ((byte) num73), (int) ((byte) num73), (int) ((byte) num73), (int) ((byte) num73));
                             if (((mouseState.X >= num70) && (mouseState.X <= (num70 + (inventoryBackTexture.Width * inventoryScale)))) && ((mouseState.Y >= num71) && (mouseState.Y <= (num71 + (inventoryBackTexture.Height * inventoryScale)))))
                             {
                                 player[myPlayer].mouseInterface = true;
-                                if ((Main.focusRecipe == num69) && (guideItem.type == 0))
+                                if ((Main.focusRecipe == recipeBatch) && (guideItem.type == 0))
                                 {
-                                    if ((Main.mouseItem.type == 0) || (Main.mouseItem.IsTheSameAs(recipe[availableRecipe[num69]].createItem) && ((Main.mouseItem.stack + recipe[availableRecipe[num69]].createItem.stack) <= Main.mouseItem.maxStack)))
+                                    if ((Main.mouseItem.type == 0) || (Main.mouseItem.IsTheSameAs(recipe[availableRecipe[recipeBatch]].createItem) && ((Main.mouseItem.stack + recipe[availableRecipe[recipeBatch]].createItem.stack) <= Main.mouseItem.maxStack)))
                                     {
                                         if (mouseLeftRelease && (mouseState.LeftButton == ButtonState.Pressed))
                                         {
                                             int stack = Main.mouseItem.stack;
-                                            Main.mouseItem = (Item) recipe[availableRecipe[num69]].createItem.Clone();
+                                            Main.mouseItem = (Item) recipe[availableRecipe[recipeBatch]].createItem.Clone();
                                             Main.mouseItem.stack += stack;
-                                            recipe[availableRecipe[num69]].Create();
-                                            if ((Main.mouseItem.type > 0) || (recipe[availableRecipe[num69]].createItem.type > 0))
+                                            recipe[availableRecipe[recipeBatch]].Create();
+                                            if ((Main.mouseItem.type > 0) || (recipe[availableRecipe[recipeBatch]].createItem.type > 0))
                                             {
                                                 PlaySound(7, -1, -1, 1);
                                             }
@@ -3712,10 +3713,10 @@
                                                 stackSplit = stackDelay;
                                             }
                                             int num75 = Main.mouseItem.stack;
-                                            Main.mouseItem = (Item) recipe[availableRecipe[num69]].createItem.Clone();
+                                            Main.mouseItem = (Item) recipe[availableRecipe[recipeBatch]].createItem.Clone();
                                             Main.mouseItem.stack += num75;
-                                            recipe[availableRecipe[num69]].Create();
-                                            if ((Main.mouseItem.type > 0) || (recipe[availableRecipe[num69]].createItem.type > 0))
+                                            recipe[availableRecipe[recipeBatch]].Create();
+                                            if ((Main.mouseItem.type > 0) || (recipe[availableRecipe[recipeBatch]].createItem.type > 0))
                                             {
                                                 PlaySound(7, -1, -1, 1);
                                             }
@@ -3724,22 +3725,22 @@
                                 }
                                 else if (mouseLeftRelease && (mouseState.LeftButton == ButtonState.Pressed))
                                 {
-                                    Main.focusRecipe = num69;
+                                    Main.focusRecipe = recipeBatch;
                                 }
                                 craftingHide = true;
-                                cursorText = recipe[availableRecipe[num69]].createItem.name;
-                                toolTip = (Item) recipe[availableRecipe[num69]].createItem.Clone();
-                                if (recipe[availableRecipe[num69]].createItem.stack > 1)
+                                cursorText = recipe[availableRecipe[recipeBatch]].createItem.name;
+                                toolTip = (Item) recipe[availableRecipe[recipeBatch]].createItem.Clone();
+                                if (recipe[availableRecipe[recipeBatch]].createItem.stack > 1)
                                 {
                                     obj2 = cursorText;
-                                    cursorText = string.Concat(new object[] { obj2, recipe[availableRecipe[num69]].createItem.name + " (", recipe[availableRecipe[num69]].createItem.stack, ")" });
+                                    cursorText = string.Concat(new object[] { obj2, recipe[availableRecipe[recipeBatch]].createItem.name + " (", recipe[availableRecipe[recipeBatch]].createItem.stack, ")" });
                                 }
                             }
 
                             /*--------------------------------*\
                              * Fucking fix me
                             \*--------------------------------*/
-                            if (numAvailableRecipes > 0 && num69 < numAvailableRecipes)
+                            if (numAvailableRecipes > 0 && recipeBatch < numAvailableRecipes)
                             {
                                 num72 -= 50.0;
                                 if (num72 < 0.0)
@@ -3748,33 +3749,34 @@
                                 }
                                 vector8 = new Vector2();
                                 this.spriteBatch.Draw(inventoryBackTexture, new Vector2((float) num70, (float) num71), new Rectangle(0, 0, inventoryBackTexture.Width, inventoryBackTexture.Height), new Color((byte) num72, (byte) num72, (byte) num72, (byte) num72), 0f, vector8, inventoryScale, SpriteEffects.None, 0f);
-                                if ((recipe[availableRecipe[num69]].createItem.type > 0) && (recipe[availableRecipe[num69]].createItem.stack > 0))
+                                if ((recipe[availableRecipe[recipeBatch]].createItem.type > 0) && (recipe[availableRecipe[recipeBatch]].createItem.stack > 0))
                                 {
                                     float num76 = 1f;
-                                    if ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Width > 0x20) || (itemTexture[recipe[availableRecipe[num69]].createItem.type].Height > 0x20))
+                                    Debug.WriteLineIf(recipeBatch > 200, "More then 200 Recipes Available");
+                                    if ((itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width > 0x20) || (itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height > 0x20))
                                     {
-                                        if (itemTexture[recipe[availableRecipe[num69]].createItem.type].Width > itemTexture[recipe[availableRecipe[num69]].createItem.type].Height)
+                                        if (itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width > itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height)
                                         {
-                                            num76 = 32f / ((float) itemTexture[recipe[availableRecipe[num69]].createItem.type].Width);
+                                            num76 = 32f / ((float) itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width);
                                         }
                                         else
                                         {
-                                            num76 = 32f / ((float) itemTexture[recipe[availableRecipe[num69]].createItem.type].Height);
+                                            num76 = 32f / ((float) itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height);
                                         }
                                     }
                                     num76 *= inventoryScale;
                                     vector8 = new Vector2();
-                                    this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[num69]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[num69]].createItem.type].Width, itemTexture[recipe[availableRecipe[num69]].createItem.type].Height), recipe[availableRecipe[num69]].createItem.GetAlpha(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
+                                    this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width, itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height), recipe[availableRecipe[recipeBatch]].createItem.GetAlpha(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
                                     color27 = new Color();
-                                    if (recipe[ availableRecipe[num69]].createItem.color != color27)
+                                    if (recipe[ availableRecipe[recipeBatch]].createItem.color != color27)
                                     {
                                         vector8 = new Vector2();
-                                        this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[num69]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[num69]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[num69]].createItem.type].Width, itemTexture[recipe[availableRecipe[num69]].createItem.type].Height), recipe[availableRecipe[num69]].createItem.GetColor(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
+                                        this.spriteBatch.Draw(itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type], new Vector2((num70 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width * 0.5f) * num76), (num71 + (26f * inventoryScale)) - ((itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height * 0.5f) * num76)), new Rectangle(0, 0, itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Width, itemTexture[recipe[availableRecipe[recipeBatch]].createItem.type].Height), recipe[availableRecipe[recipeBatch]].createItem.GetColor(color11), 0f, vector8, num76, SpriteEffects.None, 0f);
                                     }
-                                    if (recipe[availableRecipe[num69]].createItem.stack > 1)
+                                    if (recipe[availableRecipe[recipeBatch]].createItem.stack > 1)
                                     {
                                         vector8 = new Vector2();
-                                        this.spriteBatch.DrawString(fontItemStack, recipe[availableRecipe[num69]].createItem.stack.ToString(), new Vector2(num70 + (10f * inventoryScale), num71 + (26f * inventoryScale)), color10, 0f, vector8, num76, SpriteEffects.None, 0f);
+                                        this.spriteBatch.DrawString(fontItemStack, recipe[availableRecipe[recipeBatch]].createItem.stack.ToString(), new Vector2(num70 + (10f * inventoryScale), num71 + (26f * inventoryScale)), color10, 0f, vector8, num76, SpriteEffects.None, 0f);
                                     }
                                 }
                             }
@@ -6887,7 +6889,7 @@
                         string str10 = "";
                         for (int num68 = 0; num68 < 4; num68++)
                         {
-                            int num69 = num67;
+                            int recipeBatch = num67;
                             int num70 = (370 + (screenWidth / 2)) - 400;
                             switch (num68)
                             {
@@ -6897,7 +6899,7 @@
 
                                 case 1:
                                     str10 = "Music:";
-                                    num69 += 30;
+                                    recipeBatch += 30;
                                     break;
 
                                 case 2:
@@ -6908,7 +6910,7 @@
                                 case 3:
                                     str10 = Math.Round((double) (musicVolume * 100f)) + "%";
                                     num70 += 90;
-                                    num69 += 30;
+                                    recipeBatch += 30;
                                     break;
                             }
                             for (int num71 = 0; num71 < 5; num71++)
@@ -6949,7 +6951,7 @@
                                         break;
                                 }
                                 vector9 = new Vector2();
-                                this.spriteBatch.DrawString(fontDeathText, str10, new Vector2((float) (num70 + num74), (float) (num69 + num75)), color6, 0f, vector9, (float) 0.5f, SpriteEffects.None, 0f);
+                                this.spriteBatch.DrawString(fontDeathText, str10, new Vector2((float) (num70 + num74), (float) (recipeBatch + num75)), color6, 0f, vector9, (float) 0.5f, SpriteEffects.None, 0f);
                             }
                         }
                         bool flag8 = false;
