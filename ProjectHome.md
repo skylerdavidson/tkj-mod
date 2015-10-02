@@ -1,0 +1,1 @@
+A free terraria mod started by Teddy DeRego, Kalani Cook, and Josh Bermoy. This is not a crack and never will be since the developers worked hard on this game. If you want the game, go buy it.
